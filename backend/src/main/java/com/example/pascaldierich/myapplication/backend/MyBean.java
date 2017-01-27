@@ -11,6 +11,9 @@ public class MyBean {
         return myData;
     }
 
+    /**
+     * Unnecessary because of Java Library 'jokeslib'
+     */
     public void setData(String data) {
         myData = data;
     }

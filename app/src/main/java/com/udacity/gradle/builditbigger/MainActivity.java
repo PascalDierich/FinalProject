@@ -3,13 +3,22 @@ package com.udacity.gradle.builditbigger;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
 
-public class MainActivity extends ActionBarActivity {
-    private com.example.MyClass jokeDB;
+public class MainActivity extends ActionBarActivity implements BackendResponse {
+    private static final String LOG_TAG = MainActivity.class.getSimpleName();
+
+    @Override
+    public void response(String joke) {
+        Intent jokeIntent = new Intent(this, com.pascaldierich.jokepresenter.PresenterActivity.class);
+        jokeIntent.putExtra(getString(R.string.intent_key), joke);
+
+        startActivity(jokeIntent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +30,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onStart() {
         super.onStart();
 
-        this.jokeDB = new com.example.MyClass();
+//        this.jokeDB = new com.example.MyClass();
     }
 
 
@@ -48,10 +57,8 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void tellJoke(View view) {
-        Intent jokeIntent = new Intent(this, com.pascaldierich.jokepresenter.PresenterActivity.class);
-        jokeIntent.putExtra(getString(R.string.intent_key), jokeDB.getJoke());
-
-        startActivity(jokeIntent);
+        BackendConnector backendConnector = new BackendConnector();
+        backendConnector.execute();
 
 //        String joke = jokeDB.getJoke();
 //        Toast.makeText(this, joke, Toast.LENGTH_SHORT).show();
