@@ -25,7 +25,7 @@ dependencies {
     // Added for AdMob
 
     // Java Joke Library
-    compile project(':jokeslib') // TODO: can be removed because of Google backend
+//    compile project(':jokeslib') // TODO: can be removed because of Google backend
 
     // Android Joke Presenter Library
     compile project(':jokepresenter')
