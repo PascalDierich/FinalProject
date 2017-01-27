@@ -7,11 +7,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import com.example.MyClass;
-
 
 public class MainActivity extends ActionBarActivity {
-    private MyClass jokeDB;
+    private com.example.MyClass jokeDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +21,7 @@ public class MainActivity extends ActionBarActivity {
     protected void onStart() {
         super.onStart();
 
-        this.jokeDB = new MyClass();
+        this.jokeDB = new com.example.MyClass();
     }
 
 

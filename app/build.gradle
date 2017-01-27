@@ -22,13 +22,18 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.1.0'
     // Added for AdMob
-    compile 'com.google.android.gms:play-services-ads:10.0.1'
 
     // Java Joke Library
-    compile project(':jokeslib')
+    compile project(':jokeslib') // TODO: can be removed because of Google backend
 
     // Android Joke Presenter Library
     compile project(':jokepresenter')
+
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.google.android.gms:play-services-ads:10.0.1'
+    compile 'com.google.code.findbugs:jsr305:2.0.1'
+
+    // Google Cloud backend Module
+    compile project(path: ':backend', configuration: 'android-endpoints')
 }
