@@ -29,4 +29,6 @@ dependencies {
     // Java Joke Library
     compile project(':jokeslib')
 
+    // Android Joke Presenter Library
+    compile project(':jokepresenter')
 }

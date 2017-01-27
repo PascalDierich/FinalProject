@@ -12,12 +12,16 @@ public class MyClass {
     }
 
     public String getJoke() {
+        if (jokesCollection.size() == 0) {
+            addJokes(); // Just to be sure
+        }
+
         String joke;
         int randomPosition = ThreadLocalRandom.current().nextInt(0, jokesCollection.size());
 
         try {
             joke = jokesCollection.get(randomPosition);
-        } catch (NullPointerException e) {
+        } catch (Exception e) { // Doesn't matter what kind of Exception
             return getJoke();
         }
         return joke;

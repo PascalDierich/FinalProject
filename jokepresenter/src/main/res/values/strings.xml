@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">JokePresenter</string>
+    <string name="error_message">An Error occured</string>
+    <string name="intent_key">joke</string>
 </resources>
