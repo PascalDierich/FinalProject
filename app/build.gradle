@@ -36,4 +36,7 @@ dependencies {
 
     // Google Cloud backend Module
     compile project(path: ':backend', configuration: 'android-endpoints')
+
+    // Dependencies for 'test'
+    androidTestCompile 'junit:junit:4.12'
 }

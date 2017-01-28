@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements BackendConnector.
     @Override
     public void response(String joke) {
         Intent jokeIntent = new Intent(this, PresenterActivity.class);
+
         if (joke == null) joke = getString(R.string.emergency_joke); // Emergency Joke :D
 
         jokeIntent.putExtra(getString(R.string.intent_key), joke);
