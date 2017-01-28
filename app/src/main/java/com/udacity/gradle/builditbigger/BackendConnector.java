@@ -19,7 +19,11 @@ class BackendConnector extends AsyncTask<Void, Void, String> {
 
     private static MyApi sMyApi = null;
 
-    private BackendResponse response;
+    private JokesReady response;
+
+    public BackendConnector(JokesReady response) {
+        this.response = response;
+    }
 
     @Override
     protected String doInBackground(Void... params) {
@@ -49,8 +53,11 @@ class BackendConnector extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPostExecute(String joke) {
-        response = new MainActivity();
         response.response(joke);
+    }
+
+    public interface JokesReady {
+        void response(String joke);
     }
 
 }

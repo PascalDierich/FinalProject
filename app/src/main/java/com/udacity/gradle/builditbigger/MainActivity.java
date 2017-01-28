@@ -2,7 +2,7 @@ package com.udacity.gradle.builditbigger;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,14 +10,14 @@ import android.view.View;
 import com.pascaldierich.jokepresenter.PresenterActivity;
 
 
-public class MainActivity extends ActionBarActivity implements BackendResponse {
+public class MainActivity extends AppCompatActivity implements BackendConnector.JokesReady {
     private static final String LOG_TAG = MainActivity.class.getSimpleName();
 
-
+    
 
     @Override
     public void response(String joke) {
-        Intent jokeIntent = new Intent(MainActivity.this, PresenterActivity.class);
+        Intent jokeIntent = new Intent(this, PresenterActivity.class);
         if (joke == null) joke = getString(R.string.emergency_joke); // Emergency Joke :D
 
         jokeIntent.putExtra(getString(R.string.intent_key), joke);
@@ -62,7 +62,7 @@ public class MainActivity extends ActionBarActivity implements BackendResponse {
     }
 
     public void tellJoke(View view) {
-        BackendConnector backendConnector = new BackendConnector();
+        BackendConnector backendConnector = new BackendConnector(this);
         backendConnector.execute();
 
 //        String joke = jokeDB.getJoke();
