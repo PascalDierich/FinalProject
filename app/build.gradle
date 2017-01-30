@@ -35,6 +35,14 @@ android {
             }
         }
     }
+    sourceSets {
+        free {
+            manifest.srcFile 'src/free/AndroidManifest.xml'
+        }
+        paid {
+            manifest.srcFile 'src/paid/AndroidManifest.xml'
+        }
+    }
 }
 
 dependencies {
