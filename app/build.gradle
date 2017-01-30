@@ -18,11 +18,27 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    productFlavors {
+        paid {
+            applicationId "com.udacity.gradle.builditbigger.paid"
+            versionNameSuffix "-paid"
+        }
+
+        free {
+            applicationId "com.udacity.gradle.builditbigger.free"
+            versionNameSuffix "-free"
+
+            dependencies {
+                // Dependency in free mode for AdMob
+                compile 'com.google.android.gms:play-services:10.0.1'
+            }
+        }
+    }
 }
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    // Added for AdMob
 
     // Java Joke Library
 //    compile project(':jokeslib') // TODO: can be removed because of Google backend
@@ -31,7 +47,6 @@ dependencies {
     compile project(':jokepresenter')
 
     compile 'com.android.support:appcompat-v7:25.1.0'
-    compile 'com.google.android.gms:play-services-ads:10.0.1'
     compile 'com.google.code.findbugs:jsr305:2.0.1'
 
     // Google Cloud backend Module
